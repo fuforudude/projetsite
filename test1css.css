@@ -22,6 +22,13 @@ body {
     padding: 20px;
     text-align: center;
 }
+.block {
+    border: 1px solid #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+
+}
 .nom{
     text-align: left;
 }
