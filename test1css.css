@@ -13,9 +13,11 @@ body {
     padding: 0;
     background-color: rgba(0,0,0,0.5);
     color: #fff;
+    display : grid;
+    grid-template-columns: 1fr 1fr;
 }
 
-.content {
+.interface {
     margin-top: 70px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -27,7 +29,13 @@ body {
     padding: 20px;
     margin: 20px;
     border-radius: 10px;
-
+    background-color: rgba(0,0,0,0.5);
+}
+.colonne{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+    text-align: center;
 }
 .nom{
     text-align: left;
