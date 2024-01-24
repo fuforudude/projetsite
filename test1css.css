@@ -44,11 +44,13 @@ body {
     text-align: right;
 }
 
-.h2 {
+h2{
     text-align: center;
+    color: white;
+    font-size: 300%;
     font-family: "Elden_Ring";
 }
 @font-face {
     font-family: "Elden_Ring";
-    src: url(Polices/Mantinia_Regular.otf);
+    src: url(Polices/Mantinia-Regular.ttf);
 }
