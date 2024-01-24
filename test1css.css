@@ -43,3 +43,12 @@ body {
 .stat{
     text-align: right;
 }
+
+.h2 {
+    text-align: center;
+    font-family: "Elden_Ring";
+}
+@font-face {
+    font-family: "Elden_Ring";
+    src: url(Polices/Mantinia_Regular.otf);
+}
