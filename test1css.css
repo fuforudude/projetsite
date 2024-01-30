@@ -16,35 +16,23 @@ body {
     display : grid;
     grid-template-columns:1fr 1080px;
 }
-.perso{
-    display: block;
-    position: fixed;
-    width: 28.5%;
-    height: 100%;
-}
 .icones{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 100px;
-    padding: 20px;
     text-align: center;
-    background-image: url(images/silhouettes-homme-posant-removebg-preview.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 }
 .icone_gauche{
-    background-color: aqua;
+    margin-top: 100px;
 }
 .icone_milieu{
-    background-color: blue;
     align-items: center;
 }
 .icone_droite{
-    background-color: blueviolet;
+    margin-top: 100px;
 }
-.icone{
-    height: 100px;
+.silhouette_icone{
+    height: 100%;
 }
 .interface {
     margin-top: 70px;
