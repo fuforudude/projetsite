@@ -88,3 +88,14 @@ h2{
     font-family: "Moche";
     src: url(Polices/Moche.ttf);
 }
+.column {
+    float: left;
+    width: 35%;
+    padding: 10%;
+  }
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
