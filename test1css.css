@@ -21,17 +21,35 @@ body {
     position: fixed;
     width: 28.5%;
     height: 100%;
+}
+.icones{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 100px;
+    padding: 20px;
+    text-align: center;
     background-image: url(images/silhouettes-homme-posant-removebg-preview.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 200px;
+    background-size: cover;
 }
-
+.icone_gauche{
+    background-color: aqua;
+}
+.icone_milieu{
+    background-color: blue;
+    align-items: center;
+}
+.icone_droite{
+    background-color: blueviolet;
+}
+.icone{
+    height: 100px;
+}
 .interface {
     margin-top: 70px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    text-align: center;
 }
 .block {
     border: 1px solid #fff;
@@ -50,7 +68,10 @@ body {
 .stat{
     text-align: right;
 }
-
+p{
+    font-size: 150%;
+    font-family: "Moche";
+}
 h2{
     text-align: center;
     color: white;
@@ -60,4 +81,10 @@ h2{
 @font-face {
     font-family: "Elden_Ring";
     src: url(Polices/Mantinia-Regular.ttf);
+}
+
+ 
+@font-face {
+    font-family: "Moche";
+    src: url(Polices/Moche.ttf);
 }
