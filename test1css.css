@@ -7,6 +7,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .container {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -20,6 +21,17 @@ button {
     background-color: transparent;
     border: none;
     padding: 0; 
+}
+.close-button {
+    background-color: #ff0000; /* Couleur de fond du bouton (remplacez par la couleur souhaitée) */
+    color: #ffffff; /* Couleur du texte du bouton (remplacez par la couleur souhaitée) */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    /* Ajoutez d'autres styles si nécessaire */
+}
+.caché {
+    display: none;
 }
 .divelements {
     position: fixed;

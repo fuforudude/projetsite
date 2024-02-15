@@ -1,8 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('casque').addEventListener('click', fetchDataFromAPI);
-    console.log("Button clicked!");
-  });
-  
+    // Sélectionne l'élément avec l'ID 'casque' et ajoute un écouteur de clic
+    document.getElementById('casque').addEventListener('click', function() {
+        // Sélectionne l'élément avec l'ID 'caché'
+        var afficheElement = document.getElementById("divcasque");
+
+        // Vérifie si l'élément a la classe 'caché'
+        var isHidden = afficheElement.classList.contains("caché");
+
+        // Si l'élément est caché, le montre. Sinon, le cache.
+        if (isHidden) {
+            afficheElement.classList.remove("caché");
+            afficheElement.classList.add("divelements");
+        } else {
+            afficheElement.classList.remove("divelements");
+            afficheElement.classList.add("caché");
+        }
+
+        // Appelle la fonction fetchDataFromAPI uniquement lorsque l'élément est visible
+        if (isHidden) {
+            fetchDataFromAPI();
+        }
+    });
+});
   function fetchDataFromAPI() {
     const apiUrl = 'https://eldenring.fanapis.com/api/armors?limit=568&page=1'; 
     fetch(apiUrl)
@@ -30,23 +49,40 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('displayDataOnSite is called');
     const apiDataContainer = document.getElementById('divcasque');
 
-        data[3].forEach(item => {
-          console.log(item.image, item.name);
-          if (item.image && item.name) {
+    data[3].forEach(item => {
+        console.log(item.image, item.name);
+        if (item.image && item.name) {
             const divElement = document.createElement('div');
             divElement.className = 'gallery-item';
-        
+
             divElement.innerHTML = `
-              <a class="item-link" href="#">
-                <img class="item-image" src="${item.image}" alt="${item.name}">
-                <div class="item-name">${item.name}</div>
-              </a>
+                <a class="item-link" href="#">
+                    <img class="item-image" src="${item.image}" alt="${item.name}">
+                    <div class="item-name">${item.name}</div>
+                </a>
             `;
+
+            // Ajouter un gestionnaire d'événements pour le bouton "Fermer"
+            const closeButton = divElement.querySelector('.close-button');
+            closeButton.addEventListener('click', function(event) {
+                // Empêche le clic sur le bouton de déclencher le clic sur le lien parent
+                event.preventDefault();
+            
+                // Cache l'élément divcasque
+                apiDataContainer.classList.remove("divelements");
+                apiDataContainer.classList.add("caché");
+            
+                // Supprime tous les éléments enfants de divcasque
+                while (apiDataContainer.firstChild) {
+                    apiDataContainer.removeChild(apiDataContainer.firstChild);
+                }
+            });
+
             console.log(divElement);
             apiDataContainer.appendChild(divElement);
-          }
-        });
-      }
+        }
+    });
+}
 
 //#######################################################################################################################################
 document.addEventListener('DOMContentLoaded', function() {
