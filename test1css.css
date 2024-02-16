@@ -17,6 +17,12 @@ body {
     display : grid;
     grid-template-columns:1fr 1080px;
 }
+/*quand l'écran est petit*/
+@media screen and (max-width: 1080px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
 button {
     background-color: transparent;
     border: none;

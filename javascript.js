@@ -1,5 +1,4 @@
-let equippedItems = [];
-
+let equippedHelm = [];
 document.addEventListener('DOMContentLoaded', function() {
 
     // Sélectionne l'élément avec l'ID 'casque' et ajoute un écouteur de clic
@@ -347,11 +346,37 @@ function displayDataOnSite(data, category, imageId) {
                 originalImage.src = item.image;
                 originalImage.alt = item.name;
 
-                if (equippedItems.includes(item)) {
-                    equippedItems.splice(equippedItems.indexOf(item), 1);
+                if (category === 'Helm') {
+                  equippedHelm = [];
+                  equippedHelm.push(item);
+                  console.log(equippedHelm);
+                } else if (category === 'Chest Armor') {
+                  equippedChest = [];
+                  equippedChest.push(item);
+                  console.log(equippedChest);
+                } else if (category === 'Leg Armor') {
+                  equippedLeg = [];
+                  equippedLeg.push(item);
+                  console.log(equippedLeg);
+                } else if (category === 'Gauntlets') {
+                  equippedGauntlets = [];
+                  equippedGauntlets.push(item);
+                  console.log(equippedGauntlets);
                 }
-                equippedItems.push(item);
-                console.log(equippedItems);
+                if (equippedHelm.length > 0) {
+                  let helmPhysique = equippedHelm[0].dmNegation.find(dmgNegation => dmgNegation.name === 'Phy');
+                  if (helmPhysique) {
+                    console.log(helmPhysique.amount);
+                  }else{
+                    console.log("Helm sans attribut");
+                  }
+                } else {
+                  console.log("Helm non trouve");
+                }
+                let equippedChest = [];
+                let equippedLeg = [];
+                let equippedGauntlets = [];
+
 
                 clearDataContainer();
             });
