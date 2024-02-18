@@ -23,6 +23,36 @@ body {
         grid-template-columns: 1fr;
     }
 }
+.floatingWindow {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 250px;
+    border: 1px solid black;
+    padding: 10px;
+    background-image: url(images/background/calc_eldenlist_background_elden_ring_wiki_guide.webp);
+    background-size: cover;
+    z-index: 1001;
+}
+.floating-stats{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.floating-image{
+    width: 200px;
+}
+.floating-stats-table {
+    margin-left: 20%;
+    margin-right: auto;
+    width: 250px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 10px;
+    text-align: center;
+}
 button {
     background-color: transparent;
     border: none;
@@ -46,7 +76,7 @@ button {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     overflow-y: scroll;
     height: 65%;
-    width: 80%;
+    width: 70%;
     margin-top: 10%;
     margin-left: 10%;
     background-image: url(images/background/calc_eldenlist_background_elden_ring_wiki_guide.webp);

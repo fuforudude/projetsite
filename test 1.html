@@ -8,6 +8,9 @@
     <link rel="icon" href="images/Icone.ico">
 </head>
 <body>
+    <div id="floatingWindow" class="floatingWindow">
+        patate
+    </div>
     <div class="container">
             <div class="caché" id="divcasque">
                 <button class="close-button" id="close-button">X</button>
@@ -130,7 +133,7 @@
                         <p>100</p>
                         <p>1000</p>
                         <p>50%</p>
-                        <p>léger/moyen/lourd</p>
+                        <p id="weight"></p>
                         <p>0</p>
                         <p>111.0</p>
                     </div>
@@ -158,25 +161,17 @@
             <section class="block">
                 <h2>Défense</h2>
                 <div class="colonne">
-                    <div class="nom">
+                    <div class="nom" id="dmgNegation_name">
                         <p>Physique</p>
-                        <p>Magique</p>
-                        <p>Feu</p>
-                        <p>Foudre</p>
-                        <p>Sacre</p>
-                        <p>Tranchant</p>
-                        <p>Armure</p>
-                        <p>Robustesse</p>
+                        <p>Strike</p>
+                        <p>Slash</p>
+                        <p>Pierce</p>
+                        <p>Magic</p>
+                        <p>Fire</p>
+                        <p>Ligt</p>
+                        <p>Holy</p>
                     </div>
-                    <div class="stat">
-                        <p>79</p>
-                        <p>79</p>
-                        <p>79</p>
-                        <p>79</p>
-                        <p>79</p>
-                        <p>79</p>
-                        <p>79</p>
-                        <p>79</p>
+                    <div class="stat" id="dmgNegation">
                     </div>
                 </div>
                 <h2>Résistance</h2>
@@ -188,7 +183,7 @@
                         <p>Feu</p>
                         <p>Foudre</p>
                     </div>
-                    <div class="stat">
+                    <div class="stat" id="resistance">
                         <p>79</p>
                         <p>79</p>
                         <p>79</p>
