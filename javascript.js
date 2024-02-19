@@ -1,13 +1,37 @@
-
+clearDataContainer();
+let statsHelm = {};
+let statsChest = {};
+let statsLegs = {};
+let statsGauntlets = {};
+let stats = {
+  Phy: 0,
+  Strike: 0,
+  Slash: 0,
+  Pierce: 0,
+  Magic: 0,
+  Fire: 0,
+  Ligt: 0,
+  Holy: 0,
+  Immunity: 0,
+  Robustness: 0,
+  Focus: 0,
+  Vitality: 0,
+  Poise: 0,
+  Weight: 0
+}
 let equippedHelm = [];
 let equippedChest = [];
 let equippedLegs = [];
 let equippedGauntlets = [];
 let equippedItems = [];
+let buttonId;
 document.addEventListener('DOMContentLoaded', function() {
 
     // Sélectionne l'élément avec l'ID 'casque' et ajoute un écouteur de clic
     document.getElementById('casque').addEventListener('click', function() {
+      let element = document.getElementById('solo-button');
+      element.id ='empty-Helm';
+
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -30,6 +54,8 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPI5('Helm', 'casqueicone');
     });
     document.getElementById('buste').addEventListener('click', function() {
+      let element = document.getElementById('solo-button');
+      element.id ='empty-Chest Armor';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -52,6 +78,8 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPI5('Chest Armor', 'busteicone');
     });
     document.getElementById('gants').addEventListener('click', function() {
+      let element = document.getElementById('solo-button');
+      element.id ='empty-Gauntlets';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -74,6 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPI5('Gauntlets', 'gantsicone');
     });
     document.getElementById('jambieres').addEventListener('click', function() {
+      let element = document.getElementById('solo-button');
+      element.id ='empty-Leg Armor';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -314,6 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
           const itemImage = document.getElementById(imageId);
           itemImage.src = item.image;
           itemImage.alt = item.name;
+          console.log(buttonId);
 
 
           clearDataContainer();
@@ -321,7 +352,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-  
 function displayDataOnSite(data, category, imageId) {
     const apiDataContainer = document.getElementById('divcasque');
 
@@ -330,6 +360,7 @@ function displayDataOnSite(data, category, imageId) {
         if (item.image && item.name && item.category === category) {
             const divElement = document.createElement('div');
             divElement.className = 'gallery-item';
+           
             let phyNegation = item.dmgNegation.find(negation => negation.name === 'Phy');
             let phyAmount = phyNegation ? phyNegation.amount : 0;
             let strikeNegation = item.dmgNegation.find(negation => negation.name === 'Strike');
@@ -364,7 +395,6 @@ function displayDataOnSite(data, category, imageId) {
                     <div class="item-name">${item.name}</div>
                 </a>
                 <div class="caché">
-                  <div class="item-description">${item.description}</div>
                   <div class="item-phy">${phyAmount}</div>
                   <div class="item-strike">${strikeAmount}</div>
                   <div class="item-slash">${slashAmount}</div>
@@ -384,6 +414,8 @@ function displayDataOnSite(data, category, imageId) {
             
             apiDataContainer.appendChild(divElement);
             addHoverEventsToGalleryItems();
+            soloButton();
+
 
             // Ajoute un écouteur d'événements à la balise "a"
             divElement.querySelector('.item-link').addEventListener('click', function(event) {
@@ -397,33 +429,32 @@ function displayDataOnSite(data, category, imageId) {
                 let originalImage = document.getElementById(imageId);
                 originalImage.src = item.image;
                 originalImage.alt = item.name;
+                
+                for (let stat in stats) {
+                  stats[stat] = 0;
+                }
 
                 
 
                 if (category === 'Helm') {
                   equippedHelm = [];
+                  item.imageId = imageId;
                   equippedHelm.push(item);
-                  console.log(equippedHelm[0]);
-                  console.log(equippedHelm[0].dmgNegation);
                 } else if (category === 'Chest Armor') {
                   equippedChest = [];
+                  item.imageId = imageId;
                   equippedChest.push(item);
-                  console.log(equippedChest);
                 } else if (category === 'Leg Armor') {
                   equippedLegs = [];
+                  item.imageId = imageId;
                   equippedLegs.push(item);
-                  console.log(equippedLegs);
                 } else if (category === 'Gauntlets') {
                   equippedGauntlets = [];
+                  item.imageId = imageId;
                   equippedGauntlets.push(item);
-                  console.log(equippedGauntlets);
                 }
                 const damageTypes = ['Phy', 'Strike', 'Slash', 'Pierce', 'Magic', 'Fire', 'Ligt', 'Holy'];
                 const resTypes = ['Immunity', 'Robustness', 'Focus', 'Vitality', 'Poise'];
-                let statsHelm = {};
-                let statsChest = {};
-                let statsLegs = {};
-                let statsGauntlets = {};
                 if (equippedHelm.length > 0) {
                   damageTypes.forEach(damageType => {
                     let damageNegation = equippedHelm[0].dmgNegation.find(dmgNegation => dmgNegation.name === damageType);
@@ -443,7 +474,6 @@ function displayDataOnSite(data, category, imageId) {
                     statsHelm['Weight'] = weight;
                     })
                   });
-                  console.log(statsHelm);
                 };
                 if (equippedChest.length > 0) {
                   damageTypes.forEach(damageType => {
@@ -464,7 +494,6 @@ function displayDataOnSite(data, category, imageId) {
                     statsChest['Weight'] = weight;
                     })
                   });
-                  console.log(statsChest);
                 };
                 if (equippedLegs.length > 0) {
                   damageTypes.forEach(damageType => {
@@ -508,22 +537,7 @@ function displayDataOnSite(data, category, imageId) {
                   });
                   console.log(statsGauntlets);
                 }
-                let stats = {
-                  Phy: 0,
-                  Strike: 0,
-                  Slash: 0,
-                  Pierce: 0,
-                  Magic: 0,
-                  Fire: 0,
-                  Ligt: 0,
-                  Holy: 0,
-                  Immunity: 0,
-                  Robustness: 0,
-                  Focus: 0,
-                  Vitality: 0,
-                  Poise: 0,
-                  Weight: 0
-                }
+
                 let equippedItemsStats = [statsHelm, statsChest, statsLegs, statsGauntlets];
 
                 equippedItemsStats.forEach(itemStats => {
@@ -571,38 +585,15 @@ function displayDataOnSite(data, category, imageId) {
                   }
                 }
                 weightDiv.innerHTML = statsHtmlweight;
-                console.log(stats);
-                clearDataContainer();
+                clearDataContainer(category);
             });
           }
     });
 }
 
 
-function clearDataContainer() {
-    const apiDataContainer = document.getElementById('divcasque');
-    apiDataContainer.innerHTML = '<button class="close-button" id="close-button">X</button>';
-    floatingWindow.style.display = 'none';
 
-    // Ajouter un gestionnaire d'événements pour le bouton "Fermer"
-    document.getElementById('close-button').addEventListener('click', function() {
-      // Sélectionne l'élément avec l'ID 'caché'
-      var afficheElement = document.getElementById("divcasque");
-    
-      // Vérifie si l'élément a la classe 'caché'
-      var isHidden = afficheElement.classList.contains("caché");
-    
-      // Si l'élément est caché, le montre. Sinon, le cache.
-      if (isHidden) {
-          afficheElement.classList.remove("caché");
-          afficheElement.classList.add("divelements");
-      } else {
-          afficheElement.classList.remove("divelements");
-          afficheElement.classList.add("caché");
-          clearDataContainer();
-      }
-    });
-  }
+
   function addHoverEventsToGalleryItems() {
     // Récupérer tous les éléments de la galerie
     let galleryItems = document.querySelectorAll('.gallery-item');
@@ -617,7 +608,6 @@ function clearDataContainer() {
             // Récupérer les informations de l'objet
             let itemName = item.querySelector('.item-name').textContent;
             let itemImageSrc = item.querySelector('.item-image').src;
-            let itemDescription = item.querySelector('.item-description').textContent;
             let itemPhy = item.querySelector('.item-phy').textContent;
             let itemStrike = item.querySelector('.item-strike').textContent;
             let itemSlash = item.querySelector('.item-slash').textContent;
@@ -718,4 +708,172 @@ function clearDataContainer() {
     });
 }
 
+function soloButton() {
+  let buttons = document.getElementsByClassName('close-solo-button');
 
+  for(let i = 0; i < buttons.length; i++) {
+    let button = buttons[i];
+
+    button.addEventListener('click', function() {
+      if (button.id === 'empty-Helm') {
+        document.getElementById('casqueicone').src = 'images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG';
+        resetHelmStats();
+        console.log(statsHelm);
+      } else if (button.id === 'empty-Chest Armor') {
+        document.getElementById('busteicone').src = 'images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG';
+        resetChestStats();
+        console.log(statsChest);
+      } else if (button.id === 'empty-Leg Armor') {
+        document.getElementById('jambieresicone').src = 'images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG';
+        resetLegsStats();
+        console.log(statsLegs);
+      } else if (button.id === 'empty-Gauntlets') {
+        document.getElementById('gantsicone').src = 'images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG';
+        resetGauntletsStats();
+        console.log(statsGauntlets);
+      }
+      // Sélectionne l'élément avec l'ID 'caché'
+      var afficheElement = document.getElementById("divcasque");
+      // Vérifie si l'élément a la classe 'caché'
+      var isHidden = afficheElement.classList.contains("caché");
+    
+      // Si l'élément est caché, le montre. Sinon, le cache.
+      if (isHidden) {
+          afficheElement.classList.remove("caché");
+          afficheElement.classList.add("divelements");
+          clearDataContainer();
+      } else {
+          afficheElement.classList.remove("divelements");
+          afficheElement.classList.add("caché");
+          clearDataContainer();
+      }
+    });
+  }
+}
+
+function clearDataContainer() {
+  const apiDataContainer = document.getElementById('divcasque');
+  apiDataContainer.innerHTML = `
+  <div class="searchBar" id="searchBarContainer">
+    <input type="text" id="searchBar" onkeyup="searchFunction()" placeholder="Search for names..">
+    <button class="close-button" id="close-button">X</button>
+  </div>
+  <button id="solo-button" class="item-link">
+    <img id="icone_armure" src="images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG">
+    <p id="empty_nom">Empty</p>
+  </button>
+  `;
+    floatingWindow.style.display = 'none';
+  apiDataContainer.classList.remove("divelements");
+  apiDataContainer.classList.add("caché");
+    // Ajouter un gestionnaire d'événements pour le bouton "Fermer"
+  document.getElementById('close-button').addEventListener('click', function() {
+    // Sélectionne l'élément avec l'ID 'caché'
+    var afficheElement = document.getElementById("divcasque");
+    // Vérifie si l'él
+    var isHidden = afficheElement.classList.contains("caché");
+    // Si l'élément est caché, le montre. Sinon, le cache.
+    if (isHidden) {
+        afficheElement.classList.remove("caché");
+        afficheElement.classList.add("divelements");
+    } else {
+        afficheElement.classList.remove("divelements");
+        afficheElement.classList.add("caché");
+        clearDataContainer();
+    }
+    });
+  }
+  function resetHelmStats() {
+    let statsHelm = {
+      'Phy': 0,
+      'Strike': 0,
+      'Slash': 0,
+      'Pierce': 0,
+      'Magic': 0,
+      'Fire': 0,
+      'Ligt': 0,
+      'Holy': 0,
+      'Immunity': 0,
+      'Robustness': 0,
+      'Focus': 0,
+      'Vitality': 0,
+      'Poise': 0,
+      'Weight': 0
+    };
+    return statsHelm;
+  }
+  function resetChestStats() {
+    let statsChest = {
+      'Phy': 0,
+      'Strike': 0,
+      'Slash': 0,
+      'Pierce': 0,
+      'Magic': 0,
+      'Fire': 0,
+      'Ligt': 0,
+      'Holy': 0,
+      'Immunity': 0,
+      'Robustness': 0,
+      'Focus': 0,
+      'Vitality': 0,
+      'Poise': 0,
+      'Weight': 0
+    };
+    return statsChest;
+  }
+  function resetLegsStats() {
+    let statsLegs = {
+      'Phy': 0,
+      'Strike': 0,
+      'Slash': 0,
+      'Pierce': 0,
+      'Magic': 0,
+      'Fire': 0,
+      'Ligt': 0,
+      'Holy': 0,
+      'Immunity': 0,
+      'Robustness': 0,
+      'Focus': 0,
+      'Vitality': 0,
+      'Poise': 0,
+      'Weight': 0
+    };
+    return statsLegs;
+  }
+  function resetGauntletsStats() {
+    let statsGauntlets = {
+      'Phy': 0,
+      'Strike': 0,
+      'Slash': 0,
+      'Pierce': 0,
+      'Magic': 0,
+      'Fire': 0,
+      'Ligt': 0,
+      'Holy': 0,
+      'Immunity': 0,
+      'Robustness': 0,
+      'Focus': 0,
+      'Vitality': 0,
+      'Poise': 0,
+      'Weight': 0
+    };
+    return statsGauntlets;
+  }
+  function searchFunction() {
+    // Declare variables
+    let input, filter, div,divs, txtValue;
+    input = document.getElementById('searchBar');
+    filter = input.value.toUpperCase();
+    div = document.getElementById('divcasque');
+    divs = div.getElementsByClassName('gallery-item');
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (let i = 0; i < divs.length; i++) {
+        txtValue = divs[i].textContent || divs[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            divs[i].style.display = "";
+        } else {
+            divs[i].style.display = "none";
+        }
+    }
+}

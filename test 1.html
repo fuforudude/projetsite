@@ -13,7 +13,11 @@
     </div>
     <div class="container">
             <div class="caché" id="divcasque">
-                <button class="close-button" id="close-button">X</button>
+                <div class="searchBar" id="searchBarContainer">
+                    <input type="text" id="searchBar" onkeyup="searchFunction()" placeholder="Search for names..">
+                    <button class="close-button" id="close-button">X</button>
+                </div>
+                <button id="solo-button" class="close-button">X</button>
             </div>
         <section class="personnage">
             <div class="perso">
@@ -45,7 +49,7 @@
                 <div class="icone_milieu">
                     <div class="icone_container">
                         <button>
-                            <img id="set_complet" class="icone" src="images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG" alt="armor_slot">
+                            <img id="empty-button" class="icone" src="images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG" alt="armor_slot">
                         </button>
                     </div>
                     <div class="silhouette">
