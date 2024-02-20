@@ -6,10 +6,12 @@ body {
     background-attachment: fixed;
     margin: 0;
     padding: 0;
+    cursor: url(Curseur/Eldenring.cur), auto;
 }
 a {
     color: #fff;
     text-decoration: none;
+    cursor: url(Curseur/Eldenring.cur), auto;
 }
 /*modifier le texte d'id empty_nom*/
 #empty_nom {
@@ -68,7 +70,8 @@ a {
 button {
     background-color: transparent;
     border: none;
-    padding: 0; 
+    padding: 0;
+    cursor: url(Curseur/Eldenring.cur), auto;
 }
 .close-button {
     background-color: #ff0000; /* Couleur de fond du bouton (remplacez par la couleur souhaitée) */
@@ -76,6 +79,7 @@ button {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    
     /* Ajoutez d'autres styles si nécessaire */
 }
 .caché {
@@ -208,3 +212,38 @@ h2{
     display: table;
     clear: both;
   }
+.searchbar{
+    margin-top: 10px;
+    margin-left: 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    cursor: url(Curseur/Eldenring.cur), auto;
+}
+input[type="text"]{
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    padding: 5px;
+    cursor: url(Curseur/Text.cur), auto;
+}
+.item-name{
+    text-align: center;
+    font-family: "Meteoric-Bold";
+}
+@font-face {
+    font-family: "Meteoric-Bold";
+    src: url("https://db.onlinewebfonts.com/t/82a1a6e5316d84f1b8e2fa22a97e1211.eot");
+    src: url("https://db.onlinewebfonts.com/t/82a1a6e5316d84f1b8e2fa22a97e1211.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/82a1a6e5316d84f1b8e2fa22a97e1211.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/82a1a6e5316d84f1b8e2fa22a97e1211.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/82a1a6e5316d84f1b8e2fa22a97e1211.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/82a1a6e5316d84f1b8e2fa22a97e1211.svg#Meteoric-Bold")format("svg");
+}
+td{
+    padding: 5px;
+    text-align: center;
+    font-family: "Moche";
+}
