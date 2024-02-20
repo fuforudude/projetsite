@@ -96,6 +96,7 @@ button {
     background-size: cover;
     background-position: center;
 }
+.solo-button,
 .item-link{
     z-index: 2;
     display: flex;

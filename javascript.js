@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPI5('Leg Armor', 'jambieresicone');
     });
     document.getElementById('talisman1').addEventListener('click', function() {
+        buttonId = 'empty-talisman1';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -144,6 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPItalisman('talisman1icone');
     });
     document.getElementById('talisman2').addEventListener('click', function() {
+        buttonId = 'empty-talisman2';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -162,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPItalisman('talisman2icone');
     });
     document.getElementById('talisman3').addEventListener('click', function() {
+        buttonId = 'empty-talisman3';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -180,6 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPItalisman('talisman3icone');
     });
     document.getElementById('talisman4').addEventListener('click', function() {
+      buttonId = 'empty-talisman4';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -329,8 +333,13 @@ document.addEventListener('DOMContentLoaded', function() {
             <img class="item-image" src="${item.image}" alt="${item.name}" id="item-image">
             <div class="item-name">${item.name}</div>
           </a>
+          <div class="caché">
+            <div class="item-description">${item.description}</div>
+          </div>
         `;
         apiDataContainer.appendChild(divElement);
+        addHoverEventsToGalleryItemstalisman();
+        soloButtonTalisman();
 
         // Ajoute unouteur d'événements à la balise "a"
         divElement.querySelector('.item-link').addEventListener('click', function(event) {
@@ -345,8 +354,7 @@ document.addEventListener('DOMContentLoaded', function() {
           itemImage.src = item.image;
           itemImage.alt = item.name;
           console.log(buttonId);
-
-
+          soloButtonTalisman();
           clearDataContainer();
         })
       }
@@ -586,6 +594,7 @@ function displayDataOnSite(data, category, imageId) {
                 }
                 weightDiv.innerHTML = statsHtmlweight;
                 clearDataContainer(category);
+                soloButton();
             });
           }
     });
@@ -593,7 +602,39 @@ function displayDataOnSite(data, category, imageId) {
 
 
 
+  function addHoverEventsToGalleryItemstalisman() {
+    // Récupérer tous les éléments de la galerie
+    let galleryItems = document.querySelectorAll('.gallery-item');
 
+    // Récupérer la fenêtre flottante
+    let floatingWindow = document.getElementById('floatingWindow');
+
+    // Parcourir tous les éléments de la galerie
+    galleryItems.forEach(item => {
+        // Ajouter un écouteur d'événements 'mouseover' à chaque élément
+        item.addEventListener('mouseover', () => {
+            // Récupérer les informations de l'objet
+            let itemName = item.querySelector('.item-name').textContent;
+            let itemImageSrc = item.querySelector('.item-image').src;
+            let itemDescription = item.querySelector('.item-description').textContent;
+
+            // Mettre les informations dans la fenêtre flottante
+            let infoHTML = `
+                <h3>${itemName}</h3>
+                <img src="${itemImageSrc}" alt="${itemName}">
+                <p>${itemDescription}</p>
+            `;
+            // Mettre à jour le contenu de la fenêtre flottante avec les informations de l'objet
+            floatingWindow.innerHTML = infoHTML
+            // Afficher la fenêtre flottante
+            floatingWindow.style.display = 'block';
+        });
+        // Ajouter un écouteur d'événements 'mouseout' pour cacher la fenêtre flottante lorsque la souris quitte l'élément
+        item.addEventListener('mouseout', () => {
+        floatingWindow.style.display = 'none';
+        });
+    });
+  }
   function addHoverEventsToGalleryItems() {
     // Récupérer tous les éléments de la galerie
     let galleryItems = document.querySelectorAll('.gallery-item');
@@ -707,9 +748,40 @@ function displayDataOnSite(data, category, imageId) {
         });
     });
 }
+function soloButtonTalisman() {
+  let buttons = document.getElementsByClassName('solo-button');
 
+  for(let i = 0; i < buttons.length; i++) {
+    let button = buttons[i];
+
+    button.addEventListener('click', function() {
+      if (button.id === 'empty-talisman1') {
+        document.getElementById('talisman1icone').src = 'images/Icones/talisman_slot_elden_ring_wiki_guide.JPEG';
+      } else if (button.id === 'empty-talisman2') {
+        document.getElementById('talisman2icone').src = 'images/Icones/talisman_slot_elden_ring_wiki_guide.JPEG';
+      } else if (button.id === 'empty-talisman3') {
+        document.getElementById('talisman3icone').src = 'images/Icones/talisman_slot_elden_ring_wiki_guide.JPEG';
+      } else if (button.id === 'empty-talisman4') {
+        document.getElementById('talisman4icone').src = 'images/Icones/talisman_slot_elden_ring_wiki_guide.JPEG';
+      }
+
+      var afficheElement = document.getElementById("divcasque");
+
+      var isHidden = afficheElement.classList.contains("caché");
+
+      if (isHidden) {
+        afficheElement.classList.remove("caché");
+        afficheElement.classList.add("divelements");
+      } else {
+        afficheElement.classList.remove("divelements");
+        afficheElement.classList.add("caché");
+        clearDataContainer();
+      }
+    })
+  }
+}
 function soloButton() {
-  let buttons = document.getElementsByClassName('close-solo-button');
+  let buttons = document.getElementsByClassName('solo-button');
 
   for(let i = 0; i < buttons.length; i++) {
     let button = buttons[i];
@@ -758,7 +830,7 @@ function clearDataContainer() {
     <input type="text" id="searchBar" onkeyup="searchFunction()" placeholder="Search for names..">
     <button class="close-button" id="close-button">X</button>
   </div>
-  <button id="solo-button" class="item-link">
+  <button id="solo-button" class="solo-button">
     <img id="icone_armure" src="images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG">
     <p id="empty_nom">Empty</p>
   </button>
