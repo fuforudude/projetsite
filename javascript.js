@@ -126,7 +126,8 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPI5('Leg Armor', 'jambieresicone');
     });
     document.getElementById('talisman1').addEventListener('click', function() {
-        buttonId = 'empty-talisman1';
+      let element = document.getElementById('solo-button');
+      element.id ='empty-talisman1';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -145,7 +146,8 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPItalisman('talisman1icone');
     });
     document.getElementById('talisman2').addEventListener('click', function() {
-        buttonId = 'empty-talisman2';
+      let element = document.getElementById('solo-button');
+      element.id ='empty-talisman2';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -164,7 +166,8 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPItalisman('talisman2icone');
     });
     document.getElementById('talisman3').addEventListener('click', function() {
-        buttonId = 'empty-talisman3';
+      let element = document.getElementById('solo-button');
+      element.id ='empty-talisman3';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -183,7 +186,8 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPItalisman('talisman3icone');
     });
     document.getElementById('talisman4').addEventListener('click', function() {
-      buttonId = 'empty-talisman4';
+      let element = document.getElementById('solo-button');
+      element.id ='empty-talisman4';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
