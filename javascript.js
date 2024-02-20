@@ -1,4 +1,121 @@
+let userPseudo;
+
+document.getElementById('name-form').addEventListener('submit', function(event) {
+    // Empêche le formulaire d'être soumis normalement
+    event.preventDefault();
+
+    // Obtenir la valeur entrée par l'utilisateur
+    userPseudo = document.getElementById('name-input').value;
+    document.getElementById('player_Name').innerHTML = `
+      <h2> ${userPseudo} </h2>
+    `;
+    document.getElementById('name-input').blur();
+});
+
+
+let emptyHelmAdded = false;
+let emptyChestAdded = false;
+let emptyLegsAdded = false;
+let emptyGauntletsAdded = false;
+let emptyTalismanAdded = false;
 clearDataContainer();
+let emptyHelm = {
+  image: 'images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG',
+  name: 'Empty',
+  category: 'Helm',
+  dmgNegation: [
+      {name: 'Phy', amount: 0},
+      {name: 'Strike', amount: 0},
+      {name: 'Slash', amount: 0},
+      {name: 'Pierce', amount: 0},
+      {name: 'Magic', amount: 0},
+      {name: 'Fire', amount: 0},
+      {name: 'Ligt', amount: 0},
+      {name: 'Holy', amount: 0}
+  ],
+  resistance: [
+      {name: 'Immunity', amount: 0},
+      {name: 'Robustness', amount: 0},
+      {name: 'Focus', amount: 0},
+      {name: 'Poise', amount: 0},
+      {name: 'Vitality', amount: 0}
+  ],
+  weight: 0
+};
+let emptyChest = {
+  image: 'images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG',
+  name: 'Empty',
+  category: 'Chest Armor',
+  dmgNegation: [
+      {name: 'Phy', amount: 0},
+      {name: 'Strike', amount: 0},
+      {name: 'Slash', amount: 0},
+      {name: 'Pierce', amount: 0},
+      {name: 'Magic', amount: 0},
+      {name: 'Fire', amount: 0},
+      {name: 'Ligt', amount: 0},
+      {name: 'Holy', amount: 0}
+  ],
+  resistance: [
+      {name: 'Immunity', amount: 0},
+      {name: 'Robustness', amount: 0},
+      {name: 'Focus', amount: 0},
+      {name: 'Poise', amount: 0},
+      {name: 'Vitality', amount: 0}
+  ],
+  weight: 0
+}
+let emptyLegs = {
+  image: 'images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG',
+  name: 'Empty',
+  category: 'Leg Armor',
+  dmgNegation: [
+      {name: 'Phy', amount: 0},
+      {name: 'Strike', amount: 0},
+      {name: 'Slash', amount: 0},
+      {name: 'Pierce', amount: 0},
+      {name: 'Magic', amount: 0},
+      {name: 'Fire', amount: 0},
+      {name: 'Ligt', amount: 0},
+      {name: 'Holy', amount: 0}
+  ],
+  resistance: [
+      {name: 'Immunity', amount: 0},
+      {name: 'Robustness', amount: 0},
+      {name: 'Focus', amount: 0},
+      {name: 'Poise', amount: 0},
+      {name: 'Vitality', amount: 0}
+  ],
+  weight: 0
+}
+let emptyGaunts = {
+  image: 'images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG',
+  name: 'Empty',
+  category: 'Gauntlets',
+  dmgNegation: [
+      {name: 'Phy', amount: 0},
+      {name: 'Strike', amount: 0},
+      {name: 'Slash', amount: 0},
+      {name: 'Pierce', amount: 0},
+      {name: 'Magic', amount: 0},
+      {name: 'Fire', amount: 0},
+      {name: 'Ligt', amount: 0},
+      {name: 'Holy', amount: 0}
+  ],
+  resistance: [
+      {name: 'Immunity', amount: 0},
+      {name: 'Robustness', amount: 0},
+      {name: 'Focus', amount: 0},
+      {name: 'Poise', amount: 0},
+      {name: 'Vitality', amount: 0}
+  ],
+  weight: 0
+}
+let emptytalisman = {
+  image: 'images/Icones/talisman_slot_elden_ring_wiki_guide.JPEG',
+  name: 'Empty',
+  description: ' '
+}
 let statsHelm = {};
 let statsChest = {};
 let statsLegs = {};
@@ -23,14 +140,14 @@ let equippedHelm = [];
 let equippedChest = [];
 let equippedLegs = [];
 let equippedGauntlets = [];
+// Fonction pour déséquiper tout
+
 let equippedItems = [];
 let buttonId;
 document.addEventListener('DOMContentLoaded', function() {
 
     // Sélectionne l'élément avec l'ID 'casque' et ajoute un écouteur de clic
     document.getElementById('casque').addEventListener('click', function() {
-      let element = document.getElementById('solo-button');
-      element.id ='empty-Helm';
 
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
@@ -54,8 +171,6 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPI5('Helm', 'casqueicone');
     });
     document.getElementById('buste').addEventListener('click', function() {
-      let element = document.getElementById('solo-button');
-      element.id ='empty-Chest Armor';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -78,8 +193,6 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPI5('Chest Armor', 'busteicone');
     });
     document.getElementById('gants').addEventListener('click', function() {
-      let element = document.getElementById('solo-button');
-      element.id ='empty-Gauntlets';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -102,8 +215,6 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPI5('Gauntlets', 'gantsicone');
     });
     document.getElementById('jambieres').addEventListener('click', function() {
-      let element = document.getElementById('solo-button');
-      element.id ='empty-Leg Armor';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -126,8 +237,6 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPI5('Leg Armor', 'jambieresicone');
     });
     document.getElementById('talisman1').addEventListener('click', function() {
-      let element = document.getElementById('solo-button');
-      element.id ='empty-talisman1';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -146,8 +255,6 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPItalisman('talisman1icone');
     });
     document.getElementById('talisman2').addEventListener('click', function() {
-      let element = document.getElementById('solo-button');
-      element.id ='empty-talisman2';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -166,8 +273,6 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPItalisman('talisman2icone');
     });
     document.getElementById('talisman3').addEventListener('click', function() {
-      let element = document.getElementById('solo-button');
-      element.id ='empty-talisman3';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -186,8 +291,6 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchDataFromAPItalisman('talisman3icone');
     });
     document.getElementById('talisman4').addEventListener('click', function() {
-      let element = document.getElementById('solo-button');
-      element.id ='empty-talisman4';
         // Sélectionne l'élément avec l'ID 'caché'
         var afficheElement = document.getElementById("divcasque");
 
@@ -308,7 +411,6 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         let talismanData;
         if (Array.isArray(data)) {
           talismanData = data;
@@ -326,6 +428,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   function displayDataOnSitetalisman(talismanData, imageId) {
     const apiDataContainer = document.getElementById('divcasque');
+    if (!emptyTalismanAdded) {
+      talismanData[3].unshift(emptytalisman);
+      emptyTalismanAdded = true;
+    }
 
     talismanData[3].forEach(item => {
       if (item.image && item.name) {
@@ -357,8 +463,6 @@ document.addEventListener('DOMContentLoaded', function() {
           const itemImage = document.getElementById(imageId);
           itemImage.src = item.image;
           itemImage.alt = item.name;
-          console.log(buttonId);
-          soloButtonTalisman();
           clearDataContainer();
         })
       }
@@ -366,7 +470,22 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 function displayDataOnSite(data, category, imageId) {
     const apiDataContainer = document.getElementById('divcasque');
-
+    if (!emptyChestAdded) {
+      data[3].unshift(emptyChest);
+      emptyChestAdded = true;
+    } 
+    if (!emptyHelmAdded) {  
+      data[3].unshift(emptyHelm);
+      emptyHelmAdded = true;
+    }
+    if (!emptyGauntletsAdded) {
+      data[3].unshift(emptyGaunts);
+      emptyGauntletsAdded = true;
+    }
+    if (!emptyLegsAdded) {
+      data[3].unshift(emptyLegs);
+      emptyLegsAdded = true;
+    }
 
     data[3].forEach(item => {
         if (item.image && item.name && item.category === category) {
@@ -426,7 +545,6 @@ function displayDataOnSite(data, category, imageId) {
             
             apiDataContainer.appendChild(divElement);
             addHoverEventsToGalleryItems();
-            soloButton();
 
 
             // Ajoute un écouteur d'événements à la balise "a"
@@ -526,7 +644,6 @@ function displayDataOnSite(data, category, imageId) {
                     statsLegs['Weight'] = weight;
                     })
                   });
-                  console.log(statsLegs);
                 };
                 if (equippedGauntlets.length > 0) {
                   damageTypes.forEach(damageType => {
@@ -547,7 +664,6 @@ function displayDataOnSite(data, category, imageId) {
                     statsGauntlets['Weight'] = weight;
                     })
                   });
-                  console.log(statsGauntlets);
                 }
 
                 let equippedItemsStats = [statsHelm, statsChest, statsLegs, statsGauntlets];
@@ -598,7 +714,6 @@ function displayDataOnSite(data, category, imageId) {
                 }
                 weightDiv.innerHTML = statsHtmlweight;
                 clearDataContainer(category);
-                soloButton();
             });
           }
     });
@@ -784,60 +899,19 @@ function soloButtonTalisman() {
     })
   }
 }
-function soloButton() {
-  let buttons = document.getElementsByClassName('solo-button');
-
-  for(let i = 0; i < buttons.length; i++) {
-    let button = buttons[i];
-
-    button.addEventListener('click', function() {
-      if (button.id === 'empty-Helm') {
-        document.getElementById('casqueicone').src = 'images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG';
-        resetHelmStats();
-        console.log(statsHelm);
-      } else if (button.id === 'empty-Chest Armor') {
-        document.getElementById('busteicone').src = 'images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG';
-        resetChestStats();
-        console.log(statsChest);
-      } else if (button.id === 'empty-Leg Armor') {
-        document.getElementById('jambieresicone').src = 'images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG';
-        resetLegsStats();
-        console.log(statsLegs);
-      } else if (button.id === 'empty-Gauntlets') {
-        document.getElementById('gantsicone').src = 'images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG';
-        resetGauntletsStats();
-        console.log(statsGauntlets);
-      }
-      // Sélectionne l'élément avec l'ID 'caché'
-      var afficheElement = document.getElementById("divcasque");
-      // Vérifie si l'élément a la classe 'caché'
-      var isHidden = afficheElement.classList.contains("caché");
-    
-      // Si l'élément est caché, le montre. Sinon, le cache.
-      if (isHidden) {
-          afficheElement.classList.remove("caché");
-          afficheElement.classList.add("divelements");
-          clearDataContainer();
-      } else {
-          afficheElement.classList.remove("divelements");
-          afficheElement.classList.add("caché");
-          clearDataContainer();
-      }
-    });
-  }
-}
 
 function clearDataContainer() {
+  emptyHelmAdded = false;
+  emptyChestAdded = false;
+  emptyLegsAdded = false;
+  emptyGauntletsAdded = false;
+  emptyTalismanAdded = false;
   const apiDataContainer = document.getElementById('divcasque');
   apiDataContainer.innerHTML = `
   <div class="searchBar" id="searchBarContainer">
     <input type="text" id="searchBar" onkeyup="searchFunction()" placeholder="Search for names..">
     <button class="close-button" id="close-button">X</button>
   </div>
-  <button id="solo-button" class="solo-button">
-    <img id="icone_armure" src="images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG">
-    <p id="empty_nom">Empty</p>
-  </button>
   `;
     floatingWindow.style.display = 'none';
   apiDataContainer.classList.remove("divelements");
@@ -859,82 +933,6 @@ function clearDataContainer() {
     }
     });
   }
-  function resetHelmStats() {
-    let statsHelm = {
-      'Phy': 0,
-      'Strike': 0,
-      'Slash': 0,
-      'Pierce': 0,
-      'Magic': 0,
-      'Fire': 0,
-      'Ligt': 0,
-      'Holy': 0,
-      'Immunity': 0,
-      'Robustness': 0,
-      'Focus': 0,
-      'Vitality': 0,
-      'Poise': 0,
-      'Weight': 0
-    };
-    return statsHelm;
-  }
-  function resetChestStats() {
-    let statsChest = {
-      'Phy': 0,
-      'Strike': 0,
-      'Slash': 0,
-      'Pierce': 0,
-      'Magic': 0,
-      'Fire': 0,
-      'Ligt': 0,
-      'Holy': 0,
-      'Immunity': 0,
-      'Robustness': 0,
-      'Focus': 0,
-      'Vitality': 0,
-      'Poise': 0,
-      'Weight': 0
-    };
-    return statsChest;
-  }
-  function resetLegsStats() {
-    let statsLegs = {
-      'Phy': 0,
-      'Strike': 0,
-      'Slash': 0,
-      'Pierce': 0,
-      'Magic': 0,
-      'Fire': 0,
-      'Ligt': 0,
-      'Holy': 0,
-      'Immunity': 0,
-      'Robustness': 0,
-      'Focus': 0,
-      'Vitality': 0,
-      'Poise': 0,
-      'Weight': 0
-    };
-    return statsLegs;
-  }
-  function resetGauntletsStats() {
-    let statsGauntlets = {
-      'Phy': 0,
-      'Strike': 0,
-      'Slash': 0,
-      'Pierce': 0,
-      'Magic': 0,
-      'Fire': 0,
-      'Ligt': 0,
-      'Holy': 0,
-      'Immunity': 0,
-      'Robustness': 0,
-      'Focus': 0,
-      'Vitality': 0,
-      'Poise': 0,
-      'Weight': 0
-    };
-    return statsGauntlets;
-  }
   function searchFunction() {
     // Declare variables
     let input, filter, div,divs, txtValue;
@@ -953,3 +951,4 @@ function clearDataContainer() {
         }
     }
 }
+
