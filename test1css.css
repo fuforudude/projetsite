@@ -13,7 +13,23 @@ a {
     text-decoration: none;
     cursor: url(Curseur/Eldenring.cur), auto;
 }
-/*modifier le texte d'id empty_nom*/
+.player-Name{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.name-form{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.name_container{
+    margin-top: 50px;
+    height: 70px;    
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
 #empty_nom {
     color: #fff;
     text-decoration: none;
@@ -26,16 +42,10 @@ a {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.2);
     color: #fff;
     display : grid;
     grid-template-columns:1fr 1080px;
-}
-/*quand l'écran est petit*/
-@media screen and (max-width: 1080px) {
-    .container {
-        grid-template-columns: 1fr;
-    }
 }
 .floatingWindow {
     display: none;
@@ -79,8 +89,6 @@ button {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
-    
-    /* Ajoutez d'autres styles si nécessaire */
 }
 .caché {
     display: none;
@@ -115,7 +123,6 @@ button {
     align-items: right;
 }
 .icones{
-    margin-left: 10%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 100px;
@@ -176,6 +183,16 @@ button {
     padding: 20px;
     text-align: center;
 }
+.personnage{
+    margin-left: 20%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    line-height: 0.4;
+}
+.item-name{
+    text-align: center;
+    font-family: "Meteoric-Bold";
+}
 .nom{
     text-align: left;
 }
@@ -185,22 +202,18 @@ button {
 p{
     font-family: "Moche";
 }
+td{
+    padding: 5px;
+    text-align: center;
+    font-family: "Moche";
+}
 h2{
     text-align: center;
     color: white;
     font-size: 200%;
     font-family: "Elden_Ring";
 }
-@font-face {
-    font-family: "Elden_Ring";
-    src: url(Polices/Mantinia-Regular.ttf);
-}
 
- 
-@font-face {
-    font-family: "Moche";
-    src: url(Polices/Moche.ttf);
-}
 .column {
     float: left;
     width: 35%;
@@ -228,10 +241,16 @@ input[type="text"]{
     color: #fff;
     padding: 5px;
     cursor: url(Curseur/Text.cur), auto;
-}
-.item-name{
     text-align: center;
-    font-family: "Meteoric-Bold";
+}
+
+@font-face {
+    font-family: "Elden_Ring";
+    src: url(Polices/Mantinia-Regular.ttf);
+} 
+@font-face {
+    font-family: "Moche";
+    src: url(Polices/Moche.ttf);
 }
 @font-face {
     font-family: "Meteoric-Bold";
@@ -242,8 +261,45 @@ input[type="text"]{
     url("https://db.onlinewebfonts.com/t/82a1a6e5316d84f1b8e2fa22a97e1211.ttf")format("truetype"),
     url("https://db.onlinewebfonts.com/t/82a1a6e5316d84f1b8e2fa22a97e1211.svg#Meteoric-Bold")format("svg");
 }
-td{
-    padding: 5px;
-    text-align: center;
-    font-family: "Moche";
+@media screen and (max-width: 1300px) {
+    .container {
+        grid-template-columns: 1fr;
+        
+    }
+    input[type="text"]{
+        width: 100px;
+    }
+    h2{
+        font-size: 110%;
+    }
+    .interface{
+        font-size: 13px;
+        line-height: 0.6;
+        margin-top: 50px;
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 80%;
+    }
+    .personnage{
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .divelements{
+        grid-template-columns: 1fr  1fr;
+        width: 60%;
+    }
+    .floatingWindow{
+        width: 140px;
+        right: 0;
+        top: 0;
+    }
+    th{
+        text-align: left;}
+    td{
+        text-align: left;
+    }
+    #divcasque{
+        margin-left: 10px;
+    }
 }
