@@ -1,4 +1,4 @@
-body {
+body { /*On change la base de la page en mettant un curseur, et le fond*/
     background-image: url(images/fond.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -8,37 +8,37 @@ body {
     padding: 0;
     cursor: url(Curseur/Eldenring.cur), auto;
 }
-a {
-    color: #fff;
+a { /*On remet le curseur et la couleur des liens*/
+    color: #fff; 
     text-decoration: none;
     cursor: url(Curseur/Eldenring.cur), auto;
 }
-.player-Name{
+.player-Name{ /*On met en forme le nom du joueur*/
     display: flex;
     justify-content: center;
     text-align: center;
 }
-.name-form{
+.name-form{ /*On met en forme le nom du joueur affiché a droite*/
     display: flex;
     justify-content: center;
     text-align: center;
 }
-.name_container{
+.name_container{ /*Mise en forme du nom du joueur affiché au centre*/
     margin-top: 50px;
     height: 70px;    
     display: flex;
     justify-content: center;
     text-align: center;
 }
-#empty_nom {
+#empty_nom { /*Mise en forme de l'emplacement du nom du joueur*/
     color: #fff;
     text-decoration: none;
 }
-#icone_armure {
+#icone_armure { /*Mise en forme de l'emplacement de l'image de l'armure*/
     width: 75px;
     height: 75px;
 }
-.container {
+.container { /*Mise en forme des grilles à droite de la page*/
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -47,7 +47,7 @@ a {
     display : grid;
     grid-template-columns:1fr 1080px;
 }
-.floatingWindow {
+.floatingWindow { /*Mise en forme de la fenêtre de choix*/
     display: none;
     position: fixed;
     margin-top: 30px;
@@ -59,16 +59,16 @@ a {
     background-size: cover;
     z-index: 1001;
 }
-.floating-stats{
+.floating-stats{ /*Mise en forme de la fenêtre de statistiques*/
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.floating-image{
+.floating-image{ /*Mise en forme de l'image "vide" des armures*/
     width: 200px;
 }
-.floating-stats-table {
+.floating-stats-table { /*Complément pour celle d'au dessus*/
     margin-left: 20%;
     margin-right: auto;
     width: 250px;
@@ -77,23 +77,23 @@ a {
     margin-top: 10px;
     text-align: center;
 }
-button {
+button { /*Mise en forme des boutons*/
     background-color: transparent;
     border: none;
     padding: 0;
     cursor: url(Curseur/Eldenring.cur), auto;
 }
-.close-button {
+.close-button { /*Mise en forme des boutons de fermeture*/
     background-color: #ff0000; /* Couleur de fond du bouton (remplacez par la couleur souhaitée) */
     color: #ffffff; /* Couleur du texte du bouton (remplacez par la couleur souhaitée) */
     border: none;
     padding: 5px 10px;
     cursor: pointer;
 }
-.caché {
+.caché { /*Pour avoir une fenêtre cachée*/
     display: none;
 }
-.divelements {
+.divelements { /*Complément du floating Window*/
     z-index: 1000;
     position: fixed;
     display: grid;
@@ -108,42 +108,41 @@ button {
     background-size: cover;
     background-position: center;
 }
-.solo-button,
-.item-link{
+.item-link{ /*Mise en forme du choix des items*/
     z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.item-image{
+.item-image{ /*Mise en forme de l'image des items*/
     align-items: center;
     height: 125px;
 }
-.gallery-item{
+.gallery-item{ /*Mise en forme de l'affichage des items*/
     align-items: right;
 }
-.icones{
+.icones{ /*Mise en forme des icones des items*/
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 100px;
     text-align: center;
 }
-.icone_gauche,
+.icone_gauche, /*Mise en forme des icones des items à droite et à gauche*/
 .icone_droite{
     margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.icone_milieu{
+.icone_milieu{ /*Mise en forme des icones de l'item du milieu*/
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.silhouette_icone{
+.silhouette_icone{ /*Mise en forme de l'image du perso*/
     height: 400px;
 }
-.icone_container{
+.icone_container{ /*Mise en forme de la grille des icones*/
     width: 95px;
     height: 95px;
     background-image: url(images/Icones/empty_slot_calc_elden_ring_wiki_guide.webp);
@@ -155,11 +154,11 @@ button {
     justify-content: center;
 }
 .icone,
-#item-image{
+#item-image{ /*Encore*/
     width: 75px;
     height: 75px;
 }
-.icone_grande{
+.icone_grande{ /*Toujours*/
     height: 95px;
     width: auto;
 }
