@@ -39,7 +39,6 @@ a { /*On remet le curseur et la couleur des liens*/
     height: 75px;
 }
 .container { /*Mise en forme des grilles à droite de la page*/
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: rgba(0,0,0,0.2);
@@ -162,33 +161,35 @@ button { /*Mise en forme des boutons*/
     height: 95px;
     width: auto;
 }
-.interface {
-    margin-left: 20%;
+.interface { /*Mise en forme de l'interface droite de la page*/
+    margin-left: 25%;
     max-width: fit-content;
-    font-size: 15px;
+    font-size: 20px;
     line-height: 0.4;
     margin-top: 70px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    width: max-content;
 }
-.block {
+.block { /*Mise en forme des blocks avec les stats*/
+    width: 100%;
     border: 1px solid #fff;
     border-radius: 10px;
     background-color: rgba(0,0,0,0.5);
 }
-.colonne{
+.colonne{ /*Un block est contitué d'une ou plusieurs colonnes*/
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 20px;
     text-align: center;
 }
-.personnage{
+.personnage{ /*Mise en forme du personnage*/
     margin-left: 20%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     line-height: 0.4;
 }
-.item-name{
+.item-name{ /*Mise en forme du nom de l'item avec une police différentes*/
     text-align: center;
     font-family: "Meteoric-Bold";
 }
@@ -201,37 +202,31 @@ button { /*Mise en forme des boutons*/
 p{
     font-family: "Moche";
 }
-td{
+td{ /*Mise en forme du nom des items quand on choisit*/
     padding: 5px;
     text-align: center;
     font-family: "Moche";
+    line-height: 0.55;
 }
-h2{
+h2{ /*Mise en forme des titres*/
     text-align: center;
     color: white;
     font-size: 200%;
     font-family: "Elden_Ring";
 }
-
-.column {
-    float: left;
-    width: 35%;
-    padding: 10%;
-  }
-
 .row:after {
     content: "";
     display: table;
     clear: both;
   }
-.searchbar{
+.searchbar{ /*Mise en forme de la barre de recherche*/
     margin-top: 10px;
     margin-left: 10%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     cursor: url(Curseur/Eldenring.cur), auto;
 }
-input[type="text"]{
+input[type="text"]{ /*Mise en forme du champ de recherche*/
     width: 200px;
     height: 30px;
     border-radius: 5px;
@@ -243,15 +238,15 @@ input[type="text"]{
     text-align: center;
 }
 
-@font-face {
+@font-face { /*On ajoute la police Elden ring*/
     font-family: "Elden_Ring";
     src: url(Polices/Mantinia-Regular.ttf);
 } 
-@font-face {
+@font-face { /*On ajoute la police Moche (qui vient du jeu God of War)*/
     font-family: "Moche";
     src: url(Polices/Moche.ttf);
 }
-@font-face {
+@font-face { /*On ajoute la police Meteoric Bold trouvée sur internet*/
     font-family: "Meteoric-Bold";
     src: url("https://db.onlinewebfonts.com/t/82a1a6e5316d84f1b8e2fa22a97e1211.eot");
     src: url("https://db.onlinewebfonts.com/t/82a1a6e5316d84f1b8e2fa22a97e1211.eot?#iefix")format("embedded-opentype"),
@@ -260,12 +255,12 @@ input[type="text"]{
     url("https://db.onlinewebfonts.com/t/82a1a6e5316d84f1b8e2fa22a97e1211.ttf")format("truetype"),
     url("https://db.onlinewebfonts.com/t/82a1a6e5316d84f1b8e2fa22a97e1211.svg#Meteoric-Bold")format("svg");
 }
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1300px) { /*Mise en page mobile (responsive) */
     .container {
         grid-template-columns: 1fr;
         
     }
-    input[type="text"]{
+    input[type="text"]{ 
         width: 100px;
     }
     h2{
