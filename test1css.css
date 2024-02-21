@@ -137,9 +137,43 @@ button { /*Mise en forme des boutons*/
     display: flex;
     flex-direction: column;
     align-items: center;
+    width : 200px;
 }
 .silhouette_icone{ /*Mise en forme de l'image du perso*/
     height: 400px;
+}
+.icone_container_R{
+    width: 90px;
+    height: 90px;
+    background-image: url(images/Icones/empty_slot_calc_elden_ring_wiki_guide.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1  ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+.icone_container_L{
+    width: 90px;
+    height: 90px;
+    background-image: url(images/Icones/empty_slot_calc_elden_ring_wiki_guide.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1  ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+.icone_container_armes{
+    width: 200px;
+    z-index: 1  ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .icone_container{ /*Mise en forme de la grille des icones*/
     width: 95px;
@@ -213,6 +247,12 @@ h2{ /*Mise en forme des titres*/
     color: white;
     font-size: 200%;
     font-family: "Elden_Ring";
+}
+#armesL{
+    margin-right: 10%;
+}
+#armesR{
+    margin-left: 10%;
 }
 .row:after {
     content: "";

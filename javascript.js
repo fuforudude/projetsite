@@ -15,6 +15,7 @@ let emptyChestAdded = false;
 let emptyLegsAdded = false;
 let emptyGauntletsAdded = false;
 let emptyTalismanAdded = false;
+let emptyWeaponAdded = false;
 
 clearDataContainer();//appel de la fonction clearDataContainer (elle permet de remettre en forme le datacontainer pour qu'il soit prêt à recevoir les objets)
 
@@ -42,7 +43,6 @@ let emptyHelm = {
   ],
   weight: 0
 }
-
 let emptyChest = {
   image: 'images/Icones/armor_set_slot_elden_ring_wiki_guide.JPEG',
   name: 'Empty',
@@ -121,7 +121,18 @@ let emptytalisman = {
   description: ' '
 }
 
+let emptyWeapon = {
+  image: 'images/Icones/weapon_right_slot_elden_ring_wiki_guide.webp',
+  name: 'Empty',
+  attack: [
+   {name: 'Phy', amount: 0}
+  ],
+  weight: 0
+}
+
 // définition desvariables des statistiques
+let statsWeaponLeft = {};
+let statsWeaponRight = {};
 let statsHelm = {};
 let statsChest = {};
 let statsLegs = {};
@@ -142,13 +153,18 @@ let stats = {
   Poise: 0,
   Weight: 0
 }
+let statsweapon = {
+  AttackPhy: 0
+}
 
 // définition des tableaux permettant de stocker les objets équipés
 let equippedHelm = [];
 let equippedChest = [];
 let equippedLegs = [];
 let equippedGauntlets = [];
-
+let equippedWeaponLeft = [];
+let equippedWeaponRight = [];
+let cote = [];
 // fonction d'initialisation
 document.addEventListener('DOMContentLoaded', function() {
   //fonction d'appel de l'API quand on clic sur le casque
@@ -297,6 +313,44 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     fetchDataFromAPItalisman('talisman4icone');
   });
+
+  document.getElementById('armesL').addEventListener('click', function() {
+    cote = 'gauche';//ajout du coté pour pouvoir changer la stat selon le coté de l'arme
+
+    var afficheElement = document.getElementById("divcasque");
+    var isHidden = afficheElement.classList.contains("caché");
+    if (isHidden) {
+        afficheElement.classList.remove("caché");
+        afficheElement.classList.add("divelements");
+    } else {
+        afficheElement.classList.remove("divelements");
+        afficheElement.classList.add("caché");
+        clearDataContainer();
+    }
+    fetchDataFromAPIWeapon0('armeLicone');
+    fetchDataFromAPIWeapon1('armeLicone');
+    fetchDataFromAPIWeapon2('armeLicone');
+    fetchDataFromAPIWeapon3('armeLicone');
+  });
+
+  document.getElementById('armesR').addEventListener('click', function() {
+      cote = 'droite';
+
+      var afficheElement = document.getElementById("divcasque");
+      var isHidden = afficheElement.classList.contains("caché");
+      if (isHidden) {
+          afficheElement.classList.remove("caché");
+          afficheElement.classList.add("divelements");
+      } else {
+          afficheElement.classList.remove("divelements");
+          afficheElement.classList.add("caché");
+          clearDataContainer();
+      }
+      fetchDataFromAPIWeapon0('armeRicone');
+      fetchDataFromAPIWeapon1('armeRicone');
+      fetchDataFromAPIWeapon2('armeRicone');
+      fetchDataFromAPIWeapon3('armeRicone');
+  })
 });
 
 //fonction d'appel de l'API (elles sont toutes identiques à peu de chose près, mais il était nécessaire de faire 6 appels pour l'API armure car il y avait trop d'objets)
@@ -433,10 +487,88 @@ function fetchDataFromAPItalisman(imageId){
       }
     
       displayDataOnSitetalisman(talismanData, imageId);
-    })
-  
+    });
 }
 
+function fetchDataFromAPIWeapon0(imageId){
+  const apiUrl = 'https://eldenring.fanapis.com/api/weapons?limit=100&page=0';
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      let weaponData;
+      if (Array.isArray(data)) {
+        weaponData = data;
+      } else if (typeof data === 'object' && data !== null) {
+        // Convertir l'objet en tableau
+        weaponData = Object.values(data);
+      } else {
+        console.error('Les données de l\'API ne sont pas dans un format gérable.');
+        return;
+      }
+
+      displayDataOnSiteWeapon(weaponData, imageId);
+    });
+}
+
+function fetchDataFromAPIWeapon1(imageId){
+  const apiUrl = 'https://eldenring.fanapis.com/api/weapons?limit=100&page=1';
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      let weaponData;
+      if (Array.isArray(data)) {
+        weaponData = data;
+      } else if (typeof data === 'object' && data !== null) {
+        // Convertir l'objet en tableau
+        weaponData = Object.values(data);
+      } else {
+        console.error('Les données de l\'API ne sont pas dans un format gérable.');
+        return;
+      }
+
+      displayDataOnSiteWeapon(weaponData, imageId);
+    });
+}
+
+function fetchDataFromAPIWeapon2(imageId){
+  const apiUrl = 'https://eldenring.fanapis.com/api/weapons?limit=100&page=2';
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      let weaponData;
+      if (Array.isArray(data)) {
+        weaponData = data;
+      } else if (typeof data === 'object' && data !== null) {
+        // Convertir l'objet en tableau
+        weaponData = Object.values(data);
+      } else {
+        console.error('Les données de l\'API ne sont pas dans un format gérable.');
+        return;
+      }
+
+      displayDataOnSiteWeapon(weaponData, imageId);
+    });
+}
+
+function fetchDataFromAPIWeapon3(imageId){
+  const apiUrl = 'https://eldenring.fanapis.com/api/weapons?limit=100&page=3';
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      let weaponData;
+      if (Array.isArray(data)) {
+        weaponData = data;
+      } else if (typeof data === 'object' && data !== null) {
+        // Convertir l'objet en tableau
+        weaponData = Object.values(data);
+      } else {
+        console.error('Les données de l\'API ne sont pas dans un format gérable.');
+        return;
+      }
+
+      displayDataOnSiteWeapon(weaponData, imageId);
+    })
+}
 //fonction qui affiche les données des talismans
 function displayDataOnSitetalisman(talismanData, imageId) {
   const apiDataContainer = document.getElementById('divcasque');//on affiche dans divcasque
@@ -684,6 +816,49 @@ function displayDataOnSite(data, category, imageId) {
   });
 }
 
+function displayDataOnSiteWeapon(weaponData, imageId) {
+    const apiDataContainer = document.getElementById('divcasque');
+    //on ajoute les items vides
+    if (!emptyWeaponAdded) {
+      weaponData[3].unshift(emptyWeapon);
+      emptyWeaponAdded = true;
+    } 
+    weaponData[3].forEach(item => {
+        if (item.image && item.name) {
+          const divElement = document.createElement('div');
+          divElement.className = 'gallery-item';
+          let phyAttack = item.attack.find(attack => attack.name === 'Phy');
+          let phyAmount = phyAttack ? phyAttack.amount : 0;
+          divElement.innerHTML = `
+          <a id="item-link" class="item-link" href="#">
+            <img class="item-image" src="${item.image}" alt="${item.name}" id="item-image">
+            <div class="item-name">${item.name}</div>
+          </a>
+          <div class="caché">
+            <div class="attack-phy">${phyAmount}</div>
+          </div>
+          `;
+          apiDataContainer.appendChild(divElement);
+          divElement.querySelector('.item-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            apiDataContainer.classList.remove("divelements");
+            apiDataContainer.classList.add("caché");
+            let originalImage = document.getElementById(imageId);
+            originalImage.src = item.image;
+            originalImage.alt = item.name;
+            console.log(phyAmount);
+            if (cote === 'gauche') {
+              document.getElementById('dmggauche').innerHTML = `<p>${phyAmount}</p>
+              `;
+            } else if (cote === 'droite') {
+              document.getElementById('dmgdroite').innerHTML = phyAmount;
+            }
+            clearDataContainer();
+          });
+        };
+    });
+  }
+
 
 //fonction pour ajouter une fenêtre flottante quand on passe sa souris sur un item (pour les talismans)
 function addHoverEventsToGalleryItemstalisman() {
@@ -819,6 +994,7 @@ function clearDataContainer() {
   emptyLegsAdded = false;
   emptyGauntletsAdded = false;
   emptyTalismanAdded = false;
+  emptyWeaponAdded = false;
   //on remplace entièrement le html de divcasque
   const apiDataContainer = document.getElementById('divcasque');
   apiDataContainer.innerHTML = `
